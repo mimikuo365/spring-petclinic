@@ -22,31 +22,31 @@ pipeline {
                 sh 'ansible-playbook --version'
             }
         }
-        stage('Build') {
-            steps {
-                // Run Maven on a Unix agent.
-                sh "./mvnw package"
-            }
+        // stage('Build') {
+        //     steps {
+        //         // Run Maven on a Unix agent.
+        //         sh "./mvnw package"
+        //     }
 
-        }
+        // }
 
-        stage('Static Analysis') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonarqube-token') {
-                    echo 'Static analysis..'
-                    sh './mvnw clean verify sonar:sonar'
-                }
-            }
-        }
+        // stage('Static Analysis') {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonarqube-token') {
+        //             echo 'Static analysis..'
+        //             sh './mvnw clean verify sonar:sonar'
+        //         }
+        //     }
+        // }
 
-        stage('Deploy to Production') {
-            steps {
-                script {
-                    ansiblePlaybook(credentialsId: 'ansible-ssh')
-                    // , inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
-                }
-            }
-        }
+        // stage('Deploy to Production') {
+        //     steps {
+        //         script {
+        //             ansiblePlaybook(credentialsId: 'ansible-ssh')
+        //             // , inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
+        //         }
+        //     }
+        // }
 
         // stage('Deploy') {
         //     steps {
