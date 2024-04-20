@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        PATH = "/usr/bin/ansible-playbook:${env.PATH}" // Adjust the path according to where Ansible is installed
+        PATH = "/usr/bin/ansible:${env.PATH}" // Adjust the path according to where Ansible is installed
     }
 
     stages {
