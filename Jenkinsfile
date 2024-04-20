@@ -20,9 +20,6 @@ pipeline {
         stage ('Check setup') {
             steps {
                 echo 'Checking setup...'
-                sh 'env'  // Print all environment variables
-                sh 'echo $PATH'
-                sh '/usr/bin/ansible --version'
                 sh 'which ansible'
                 sh 'ansible --version'
                 sh 'java -version'
@@ -49,8 +46,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 script {
-                    ansiblePlaybook(credentialsId: 'ansible-ssh')
-                    // , inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
+                    ansiblePlaybook(credentialsId: 'ansible-ssh', inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
                 }
             }
         }
