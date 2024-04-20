@@ -23,7 +23,7 @@ pipeline {
 
         stage('Static Analysis') {
             steps {
-                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonar-token') {
+                withSonarQubeEnv(installationName: 'sonar-server', credentialsId: 'sonarqube-token') {
                     echo 'Static analysis..'
                     sh './mvnw clean verify sonar:sonar'
                 }
