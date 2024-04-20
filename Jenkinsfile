@@ -22,8 +22,8 @@ pipeline {
                 echo 'Checking setup...'
                 sh 'java -version'
                 sh 'mvn -version'
-                sh 'which ansible-playbook'
-                sh 'ansible-playbook --version'
+                sh 'which ansible'
+                sh 'ansible --version'
             }
         }
         // stage('Build') {
