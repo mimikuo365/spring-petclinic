@@ -6,6 +6,10 @@ pipeline {
         maven "M3"
     }
 
+    environment {
+        PATH = "/usr/bin/ansible-playbook:${env.PATH}" // Adjust the path according to where Ansible is installed
+    }
+
     stages {
         // stage('Fetch') {
         //     steps {
