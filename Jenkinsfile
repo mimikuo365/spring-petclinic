@@ -13,6 +13,15 @@ pipeline {
         //         git url: 'https://github.com/mimikuo365/spring-petclinic.git', branch: 'main'
         //     }
         // }
+        stage ('Check setup') {
+            steps {
+                echo 'Checking setup...'
+                sh 'java -version'
+                sh 'mvn -version'
+                sh 'which ansible-playbook'
+                sh 'ansible-playbook --version'
+            }
+        }
         stage('Build') {
             steps {
                 // Run Maven on a Unix agent.
