@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        PATH = "/usr/bin/ansible:${env.PATH}" // Adjust the path according to where Ansible is installed
+        PATH = "/usr/bin:${env.PATH}" // Adjust the path according to where Ansible is installed
     }
 
     stages {
@@ -20,10 +20,10 @@ pipeline {
         stage ('Check setup') {
             steps {
                 echo 'Checking setup...'
-                sh 'java -version'
-                sh 'mvn -version'
                 sh 'which ansible'
                 sh 'ansible --version'
+                sh 'java -version'
+                sh 'mvn -version'
             }
         }
         // stage('Build') {
