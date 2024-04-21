@@ -46,7 +46,8 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 script {
-                    ansiblePlaybook(credentialsId: 'ansible-ssh', inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
+                    // ansiblePlaybook(credentialsId: 'ansible-ssh', inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml')
+                    ansiblePlaybook credentialsId: 'ansible-ssh-1', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/hosts.ini', playbook: 'ansible/petclinic.yml', vaultTmpPath: ''
                 }
             }
         }
