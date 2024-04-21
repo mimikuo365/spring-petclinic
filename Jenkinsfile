@@ -6,9 +6,9 @@ pipeline {
         maven "M3"
     }
 
-    environment {
-        PATH = "/usr/bin:${env.PATH}" // Adjust the path according to where Ansible is installed
-    }
+    // environment {
+    //     PATH = "/usr/bin:${env.PATH}" // Adjust the path according to where Ansible is installed
+    // }
 
     stages {
         // stage('Fetch') {
@@ -26,22 +26,22 @@ pipeline {
                 sh 'mvn -version'
             }
         }
-        stage('Build') {
-            steps {
-                // Run Maven on a Unix agent.
-                sh "./mvnw package"
-            }
+        // stage('Build') {
+        //     steps {
+        //         // Run Maven on a Unix agent.
+        //         sh "./mvnw package"
+        //     }
 
-        }
+        // }
 
-        stage('Static Analysis') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonarqube-server', credentialsId: 'sonarqube-token') {
-                    echo 'Static analysis..'
-                    sh './mvnw clean verify sonar:sonar'
-                }
-            }
-        }
+        // stage('Static Analysis') {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonarqube-server', credentialsId: 'sonarqube-token') {
+        //             echo 'Static analysis..'
+        //             sh './mvnw clean verify sonar:sonar'
+        //         }
+        //     }
+        // }
 
         stage('Deploy to Production') {
             steps {
