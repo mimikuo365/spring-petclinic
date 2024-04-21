@@ -51,11 +51,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                sh 'java -Dserver.port=8000 -jar target/*.jar &'
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying....'
+        //         sh 'java -Dserver.port=8000 -jar target/*.jar &'
+        //     }
+        // }
     }
 }
