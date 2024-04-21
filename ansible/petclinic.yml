@@ -24,6 +24,6 @@
       chdir: '/home/mimi/spring-petclinic' # Change directory to the cloned repository
 
   - name: Run Petclinic
-    shell: nohup java -Dserver.port=8000 -jar target/*.jar
+    shell: nohup java -Dserver.port=8000 -jar target/*.jar &
     args:
       chdir: '/home/mimi/spring-petclinic'
