@@ -17,14 +17,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Run Maven on a Unix agent.
-                sh "./mvnw package"
-            }
-
-        }
-
         stage('Static Analysis') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube-server', credentialsId: 'sonarqube-token') {
