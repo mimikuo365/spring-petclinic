@@ -14,16 +14,16 @@
   - name: Clone Petclinic repository
     git:
       repo: 'https://github.com/mimikuo365/spring-petclinic.git'
-      dest: '/var/spring-pet clinic'
+      dest: '/home/mimi/spring-petclinic'
       clone: yes
       update: yes
 
   - name: Build Petclinic using Maven
     shell: ./mvnw package
     args:
-      chdir: '/var/spring-pet clinic' # Change directory to the cloned repository
+      chdir: '/home/mimi/spring-petclinic' # Change directory to the cloned repository
 
   - name: Run Petclinic
     shell: nohup java -Dserver.port=8000 -jar target/*.jar
     args:
-      chdir: '/var/spring-pet clinic'
+      chdir: '/home/mimi/spring-petclinic'
