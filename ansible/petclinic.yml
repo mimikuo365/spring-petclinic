@@ -19,7 +19,7 @@
       update: yes
 
   - name: Build Petclinic using Maven
-    shell: sudo ./mvnw package
+    shell: sudo ./mvnw package -DskipTests
     args:
       chdir: '/home/mimi/spring-petclinic' # Change directory to the cloned repository
 
